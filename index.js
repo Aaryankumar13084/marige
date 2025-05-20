@@ -12,6 +12,9 @@ mongoose
   .connect(process.env["MongoDB_URI"])
   .then(() => {
     console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
   });
 
 app
@@ -24,7 +27,7 @@ app
   });
 
 // Route to handle form submission
-app.get("/registerme", async (req, res) => {
+app.post("/registerme", async (req, res) => {
   try {
     const saveuser = new user({
       boy: {
