@@ -1,13 +1,15 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const bodyParser = require("body-parser");
+
+app.use(express.static(path.join(__dirname)));
+app.use(bodyParser.urlencoded({ extended: true }));
 const user = require("./module/user");
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(
-    "mongodb+srv://codeyogiai:marriage@marriage.eqyb7uf.mongodb.net/?retryWrites=true&w=majority&appName=marriage"
-  )
+  .connect(process.env["MongoDB_URI"])
   .then(() => {
     console.log("Connected to MongoDB");
   });
