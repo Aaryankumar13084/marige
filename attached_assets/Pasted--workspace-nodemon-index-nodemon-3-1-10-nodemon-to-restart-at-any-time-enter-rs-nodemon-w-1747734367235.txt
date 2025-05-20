@@ -1,0 +1,89 @@
+~/workspace$ nodemon index
+[nodemon] 3.1.10
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,cjs,json
+[nodemon] starting `node index.js`
+Server is running on port 3000
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+MongoServerError: bad auth : authentication failed
+    at Connection.sendCommand (/home/runner/workspace/node_modules/mongoose/node_modules/mongodb/lib/cmap/connection.js:299:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.command (/home/runner/workspace/node_modules/mongoose/node_modules/mongodb/lib/cmap/connection.js:327:26)
+    at async continueScramConversation (/home/runner/workspace/node_modules/mongoose/node_modules/mongodb/lib/cmap/auth/scram.js:131:15)
+    at async executeScram (/home/runner/workspace/node_modules/mongoose/node_modules/mongodb/lib/cmap/auth/scram.js:80:5)
+    at async ScramSHA1.auth (/home/runner/workspace/node_modules/mongoose/node_modules/mongodb/lib/cmap/auth/scram.js:39:16)
+    at async performInitialHandshake (/home/runner/workspace/node_modules/mongoose/node_modules/mongodb/lib/cmap/connect.js:104:13)
+    at async connect (/home/runner/workspace/node_modules/mongoose/node_modules/mongodb/lib/cmap/connect.js:24:9) {
+  errorLabelSet: Set(2) { 'HandshakeError', 'ResetPool' },
+  errorResponse: {
+    ok: 0,
+    errmsg: 'bad auth : authentication failed',
+    code: 8000,
+    codeName: 'AtlasError'
+  },
+  ok: 0,
+  code: 8000,
+  codeName: 'AtlasError',
+  connectionGeneration: 0
+}
+
+Node.js v22.10.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node index.js`
+Server is running on port 3000
+Connected to MongoDB
+[nodemon] restarting due to changes...
+[nodemon] starting `node index.js`
+/home/runner/workspace/index.js:25
+app.("/registerme", async (req, res) => {
+    ^
+
+SyntaxError: Unexpected token '('
+    at wrapSafe (node:internal/modules/cjs/loader:1469:18)
+    at Module._compile (node:internal/modules/cjs/loader:1491:20)
+    at Object..js (node:internal/modules/cjs/loader:1689:10)
+    at Module.load (node:internal/modules/cjs/loader:1318:32)
+    at Function._load (node:internal/modules/cjs/loader:1128:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+    at node:internal/main/run_main_module:36:49
+
+Node.js v22.10.0
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node index.js`
+Server is running on port 3000
+Connected to MongoDB
+[nodemon] restarting due to changes...
+[nodemon] starting `node index.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node index.js`
+Server is running on port 3000
+Connected to MongoDB
+[nodemon] restarting due to changes...
+[nodemon] starting `node index.js`
+Server is running on port 3000
+/home/runner/workspace/node_modules/mongoose/lib/drivers/node-mongodb-native/connection.js:237
+    throw new MongooseError('The `uri` parameter to `openUri()` must be a ' +
+          ^
+
+MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+    at NativeConnection.createClient (/home/runner/workspace/node_modules/mongoose/lib/drivers/node-mongodb-native/connection.js:237:11)
+    at NativeConnection.openUri (/home/runner/workspace/node_modules/mongoose/lib/connection.js:1071:34)
+    at Mongoose.connect (/home/runner/workspace/node_modules/mongoose/lib/mongoose.js:450:15)
+    at Object.<anonymous> (/home/runner/workspace/index.js:12:4)
+    at Module._compile (node:internal/modules/cjs/loader:1546:14)
+    at Object..js (node:internal/modules/cjs/loader:1689:10)
+    at Module.load (node:internal/modules/cjs/loader:1318:32)
+    at Function._load (node:internal/modules/cjs/loader:1128:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:315:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
+
+Node.js v22.10.0
+[nodemon] app crashed - waiting for file changes before starting...
