@@ -1,228 +1,173 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Page</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-            background:url("https://i.ibb.co/wZQvpYb6/432ebfa2-e751-408a-99b8-c5b6e66e6f6f.jpg") no-repeat right center / cover;
-        }     
-.nav-link {
-  color: white;
-  text-decoration: none;
-  font-size: 1.2em;
-}
-.nav-link + .nav-link{
-  display:absolute;
-  right:4;
-}
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f5f5f5;
+        background: url("https://i.ibb.co/wZQvpYb6/432ebfa2-e751-408a-99b8-c5b6e66e6f6f.jpg")
+          no-repeat right center / cover;
+      }
+      .nav-link {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2em;
+      }
+      .nav-link + .nav-link {
+        display: absolute;
+        right: 4;
+      }
 
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-            max-width: 100vw;
-            margin: 0 auto;
-        }
-        .form-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            width: 70%;
-            margin: 50px;
-        }
-        h2 {
-            margin-top: 0;
-            color:white;
-            background:rgba(26, 18, 18,40%);
-            text-align:center;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input[type="text"],
-        input[type="number"],
-        select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 80px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
+      .container {
+        display: flex;
+        justify-content: space-between;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100vw;
+        margin: 0 auto;
+      }
+      .form-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 70%;
+        margin: 50px;
+      }
+      h2 {
+        margin-top: 0;
+        color: white;
+        background: rgba(26, 18, 18, 40%);
+        text-align: center;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input[type="text"],
+      input[type="number"],
+      select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 80px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <!-- First Form -->
-        <div class="form-container">
-            <h2>लड़के की जानकारी</h2>
-            <form action="/registerme" method="get" >
-                <div class="form-group">
-                    <label for="name1">Name:</label>
-                    <input type="text" id="name1" name="name1" required>
-                </div>
+  </head>
+  <body>
+    <div class="form-container">
+      <!-- लड़के की जानकारी -->
+      <form action="/registerme" method="get" >
+        <h2>लड़के की जानकारी</h2>
+        <div class="form-group">
+          <label for="name1">Name:</label>
+          <input type="text" id="name1" name="name1" required />
+        </div>
+        <div class="form-group">
+          <label for="fatherName1">Father's Name:</label>
+          <input type="text" id="fatherName1" name="fatherName1" required />
+        </div>
+        <div class="form-group">
+          <label for="motherName1">Mother's Name:</label>
+          <input type="text" id="motherName1" name="motherName1" required />
+        </div>
+        <div class="form-group">
+          <label for="mobile1">Mobile Number:</label>
+          <input type="number" id="mobile1" name="mobile1" required />
+        </div>
+        <div class="form-group">
+          <label for="whatsapp1">WhatsApp Number:</label>
+          <input type="number" id="whatsapp1" name="whatsapp1" />
+        </div>
+        <div class="form-group">
+          <label for="aadhar1">Aadhar Card:</label>
+          <input type="number" id="aadhar1" name="aadhar1" />
+        </div>
+        <div class="form-group">
+          <label for="cast1">Caste:</label>
+          <select id="cast1" name="cast1">
+            <option value="">Select Caste</option>
+            <option value="General">General</option>
+            <!-- ... -->
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="age1">Age:</label>
+          <input type="number" id="age1" name="age1" />
+        </div>
+      </div>
 
-                <div class="form-group">
-                    <label for="fatherName1">Father's Name:</label>
-                    <input type="text" id="fatherName1" name="fatherName1" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="motherName1">Mother's Name:</label>
-                    <input type="text" id="motherName1" name="motherName1" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="mobile1">Mobile Number:</label>
-                    <input type="number" id="mobile1" name="mobile1" required>
-                </div>             
-
-                <div class="form-group">
-                    <label for="whatsapp1">WhatsApp Number:</label>
-                    <input type="number" id="whatsapp1" name="whatsapp1">
-                </div>
-                <div class="form-group">
-                    <label for="aadhar1">Aadhar Card:</label>
-                    <input type="number" id="aadhar1" name="aadhar1">
-                </div>
-                <div class="form-group">
-            <label for="cast1">Caste:</label>
-                    <select id="cast1" name="cast1">
-                        <option value=""> Select Caste</option>
-                        <option value="General">General</option>
-                        <option value="OBC">OBC (Other Backward Class)</option>
-  <option value="SC">SC (Scheduled Caste)</option>
-                        <option value="ST">ST (Scheduled Tribe)</option>
-                        <option value="Brahmin">Brahmin</option>
-                        <option value="Rajput">Rajput</option>
-                        <option value="Vaishya">Vaishya</option>
-                        <option value="Kayastha">Kayastha</option>
-                        <option value="Jat">Jat</option>
-                        <option value="Gurjar">Gurjar</option>
-                        <option value="Yadav">Yadav</option>
-                        <option value="Kurmi">Kurmi</option>
-                        <option value="Baniya">Baniya</option>
-                        <option value="Maratha">Maratha</option>
-                        <option value="Reddy">Reddy</option>
-                        <option value="Vanniyar">Vanniyar</option>
-                        <option value="Nair">Nair</option>
-                        <option value="Ezhava">Ezhava</option>
-                        <option value="Lingayat">Lingayat</option>
-                        <option value="Vokkaliga">Vokkaliga</option>
-                        <option value="Mudaliar">Mudaliar</option>
-                        <option value="Other">Other</option>
-                    </select>
-
-                </div>
-
-                <div class="form-group">
-                    <label for="age1">Age:</label>
-                    <input type="number" id="age1" name="age1">
-                </div>
-
-
-            </form>
+      <!-- लड़की की जानकारी -->
+      <div class="form-container">
+        <h2>लड़की की जानकारी</h2>
+        <div class="form-group">
+          <label for="name2">Name:</label>
+          <input type="text" id="name2" name="name2" required />
+        </div>
+        <div class="form-group">
+          <label for="fatherName2">Father's Name:</label>
+          <input type="text" id="fatherName2" name="fatherName2" required />
+        </div>
+        <div class="form-group">
+          <label for="motherName2">Mother's Name:</label>
+          <input type="text" id="motherName2" name="motherName2" required />
+        </div>
+        <div class="form-group">
+          <label for="mobile2">Mobile Number:</label>
+          <input type="number" id="mobile2" name="mobile2" required />
+        </div>
+        <div class="form-group">
+          <label for="whatsapp2">WhatsApp Number:</label>
+          <input type="number" id="whatsapp2" name="whatsapp2" />
+        </div>
+        <div class="form-group">
+          <label for="adhar2">Aadhar Card:</label>
+          <input type="number" id="adhar2" name="adhar2" />
+        </div>
+        <div class="form-group">
+          <label for="cast2">Caste:</label>
+          <select id="cast2" name="cast2">
+            <option value="">Select Caste</option>
+            <option value="General">General</option>
+            <!-- ... -->
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="age2">Age:</label>
+          <input type="number" id="age2" name="age2" />
         </div>
 
-        <!-- Second Form -->
-        <div class="form-container">
-            <h2>लड़की की जानकारी</h2>
-            <form action="/registerme" method="GET">
-                <div class="form-group">
-                    <label for="name2">Name:</label>
-                    <input type="text" id="name2" name="name2" required>
-                </div>
 
-                <div class="form-group">
-                    <label for="fatherName2">Father's Name:</label>
-                    <input type="text" id="fatherName2" name="fatherName2" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="motherName2">Mother's Name:</label>
-                    <input type="text" id="motherName2" name="motherName2" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="mobile2">Mobile Number:</label>
-                    <input type="number" id="mobile2" name="mobile2" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="whatsapp2">WhatsApp Number:</label>
-                    <input type="number" id="whatsapp2" name="whatsapp2">
-                </div>
-                <div class="form-group">
-                    <label for="adhar2">Aadhar Card:</label>
-                    <input type="number" id="adhar2" name="adhar2">
-                </div>
-                <div class="form-group">
-            <label for="cast2">Caste:</label>
-                    <select id="cast2" name="cast2">
-                        <option value=""> Select Caste </option>
-                        <option value="General">General</option>
-                        <option value="OBC">OBC (Other Backward Class)</option>
-                        <option value="SC">SC (Scheduled Caste)</option>
-                        <option value="ST">ST (Scheduled Tribe)</option>
-                        <option value="Brahmin">Brahmin</option>
-                        <option value="Rajput">Rajput</option>
-                        <option value="Vaishya">Vaishya</option>
-                        <option value="Kayastha">Kayastha</option>
-                        <option value="Jat">Jat</option>
-   <option value="Gurjar">Gurjar</option>
-                        <option value="Yadav">Yadav</option>
-                        <option value="Kurmi">Kurmi</option>
-                        <option value="Baniya">Baniya</option>
-                        <option value="Maratha">Maratha</option>
-                        <option value="Reddy">Reddy</option>
-                        <option value="Vanniyar">Vanniyar</option>
-                        <option value="Nair">Nair</option>
-                        <option value="Ezhava">Ezhava</option>
-                        <option value="Lingayat">Lingayat</option>
-                        <option value="Vokkaliga">Vokkaliga</option>
-                        <option value="Mudaliar">Mudaliar</option>
-                        <option value="Other">Other</option>
-                        </select>
-                        </div>
-                        <div class="form-group">
-                    <label for="age1">Age:</label>
-                    <input type="number" id="age1" name="age1">
-
-
-                    </div>
-                </div>
-
-             </form>
-            <div>
-                <button type="submit">Submit</button>
-            </div>
-        </div>
-    </div>
-</body>
+      <!-- Submit Button -->
+      <div style="text-align: center">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+     </div>
+  </body>
 </html>
