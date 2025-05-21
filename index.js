@@ -26,9 +26,7 @@ app
     res.sendFile(path.join(__dirname, "register.html"));
   });
 
-// Route to handle form submission
 app.get("/registerme", async (req, res) => {
-  console.log(req.query)
   try {
     const saveuser = new user({
       boy: {
@@ -62,13 +60,13 @@ app.get("/registerme", async (req, res) => {
 
 app.get('/advocate', (req, res) => {
   res.sendFile(path.join(__dirname, 'advocate.html'));
-})
+});
 
 app.post('/registerad', async (req, res) => {
   try {
     const allUsers = await user.find({});
     let allCards = '';
-    
+
     for(const userData of allUsers) {
       allCards += `
       <div class="match-card">
@@ -97,11 +95,10 @@ app.post('/registerad', async (req, res) => {
           <div class="info"><span class="label">Caste:</span> ${userData.girl.caste}</div>
           <div class="info"><span class="label">Age:</span> ${userData.girl.age}</div>
         </div>
-      </div>
-      `;
+      </div>`;
     }
 
-    res.send(`<!DOCTYPE html>
+    const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -154,104 +151,14 @@ app.post('/registerad', async (req, res) => {
 <body>
   ${allCards}
 </body>
-</html>`);
+</html>`;
+
+    res.send(html);
   } catch (error) {
     res.status(500).send("Error fetching matches: " + error.message);
   }
 });
-    <div class="title">Shaadi Match Detail</div>
-
-    <div class="section">
-      <h3>Boy's Information</h3>
-      <div class="info"><span class="label">Name:</span> Rohan Kumar</div>
-      <div class="info"><span class="label">Father's Name:</span> Rajesh Kumar</div>
-      <div class="info"><span class="label">Mother's Name:</span> Sunita Devi</div>
-      <div class="info"><span class="label">Mobile:</span> 9876543210</div>
-      <div class="info"><span class="label">WhatsApp:</span> 9876543210</div>
-      <div class="info"><span class="label">Aadhar:</span> 123456789012</div>
-      <div class="info"><span class="label">Caste:</span> General</div>
-      <div class="info"><span class="label">Age:</span> 25</div>
-    </div>
-
-    <div class="section">
-      <h3>Girl's Information</h3>
-      <div class="info"><span class="label">Name:</span> Pooja Sharma</div>
-      <div class="info"><span class="label">Father's Name:</span> Ashok Sharma</div>
-      <div class="info"><span class="label">Mother's Name:</span> Meena Devi</div>
-      <div class="info"><span class="label">Mobile:</span> 9876543211</div>
-      <div class="info"><span class="label">WhatsApp:</span> 9876543211</div>
-      <div class="info"><span class="label">Aadhar:</span> 123456789013</div>
-      <div class="info"><span class="label">Caste:</span> General</div>
-      <div class="info"><span class="label">Age:</span> </div>
-    </div>
-  </div>
-`
-
-  res.send(`<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shaadi Match Details</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      padding: 20px;
-    }
-    .match-card {
-      max-width: 700px;
-      margin: auto; 
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .title {
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: #4CAF50;
-    }
-    .pair {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .section {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
-      background: #f9f9f9;
-      border-radius: 6px;
-    }
-    .section h3 {
-      margin: 0 0 10px;
-      color: #333;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
-    }
-    .info {
-      margin: 5px 0;
-      font-size: 14px;
-    }
-    .label {
-      font-weight: bold;
-      color: #555;
-    }
-  </style>
-</head>
-<body>
-
-
-
-</body>
-</html>`)
-  
-})
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
-})
+});
