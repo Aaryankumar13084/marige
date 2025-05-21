@@ -1,8 +1,9 @@
-const moongose = require('mongoose')
 
-const advocate=new moongose.Schema({
-    name:String,
-    password:String
+const mongoose = require('mongoose')
+
+const advocate = new mongoose.Schema({
+    name: String,
+    password: String
 })
 
-module.exports = moongose.model('advocate',advocate)
+module.exports = mongoose.model('advocate', advocate)

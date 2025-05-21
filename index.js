@@ -170,13 +170,16 @@ app.post('/registerad', async (req, res) => {
   }
 })
 
-async  function newad (name,password){
+async function newad(name, password) {
   const newadvocate = new advocate({
-    'username': name,
-    'password': password,
-  })
-  newadvocate.save()
+    name: name,
+    password: password
+  });
+  await newadvocate.save();
 }
+
+// Create a test advocate account
+newad("test", "test123");
 
 
 
