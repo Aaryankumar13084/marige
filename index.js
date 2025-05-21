@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
+const advocate = require("./module/advocate")
 
 app.use(express.static(path.join(__dirname)));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -64,6 +65,16 @@ app.get('/advocate', (req, res) => {
 
 app.post('/registerad', async (req, res) => {
   try {
+
+    const { name, password } = req.body;
+    const alladvocate = await advocate.findOne({ name, password })
+    if (alladvocate) {
+      res.redirect('/matches');
+    } else {
+      res.send('Invalid username or password');
+    }
+    
+    
     const allUsers = await user.find({});
     let allCards = '';
 
@@ -157,7 +168,17 @@ app.post('/registerad', async (req, res) => {
   } catch (error) {
     res.status(500).send("Error fetching matches: " + error.message);
   }
-});
+})
+
+async  function newad (name,password){
+  const newadvocate = new advocate({
+    'username': name,
+    'password': password,
+  })
+  newadvocate.save()
+}
+
+
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
