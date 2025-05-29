@@ -3,7 +3,7 @@ const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
 const advocate = require("./module/advocate")
-
+ 
 app.use(express.static(path.join(__dirname)));
 app.use(bodyParser.urlencoded({ extended: true }));
 const user = require("./module/user");
@@ -68,10 +68,8 @@ app.post('/registerad', async (req, res) => {
 
     const { name, password } = req.body;
     const alladvocate = await advocate.findOne({ name, password })
-    if (alladvocate) {
-      res.redirect('/matches');
-    } else {
-      res.send('Invalid username or password');
+    if (!alladvocate) {
+     return res.send('Invalid username or password');
     }
     
     
@@ -179,7 +177,7 @@ async function newad(name, password) {
 }
 
 // Create a test advocate account
-newad("test", "test123");
+
 
 
 
