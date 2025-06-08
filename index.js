@@ -2,20 +2,23 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
-const advocate = require("./module/advocate")
- 
+const advocate = require("./module/advocate");
+
 app.use(express.static(path.join(__dirname)));
 app.use(bodyParser.urlencoded({ extended: true }));
 const user = require("./module/user");
 const mongoose = require("mongoose");
 
 mongoose
-  .connect('mongodb+srv://codeyogiai:marriage@marriage.eqyb7uf.mongodb.net/?retryWrites=true&w=majority&appName=marriage', {
-    serverSelectionTimeoutMS: 10000,
-    socketTimeoutMS: 45000,
-    maxPoolSize: 10,
-    minPoolSize: 5
-  })
+  .connect(
+    "mongodb+srv://codeyogiai:marriage@marriage.eqyb7uf.mongodb.net/?retryWrites=true&w=majority&appName=marriage",
+    {
+      serverSelectionTimeoutMS: 10000,
+      socketTimeoutMS: 45000,
+      maxPoolSize: 10,
+      minPoolSize: 5,
+    },
+  )
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -65,49 +68,42 @@ app.get("/registerme", async (req, res) => {
   }
 });
 
-app.get('/advocate', (req, res) => {
-  res.sendFile(path.join(__dirname, 'advocate.html'));
+app.get("/advocate", (req, res) => {
+  res.sendFile(path.join(__dirname, "advocate.html"));
 });
 
-app.post('/registerad', async (req, res) => {
+app.post("/registerad", async (req, res) => {
   try {
     const { name, district, phone, courtAddress, password } = req.body;
-    
+
     // Check if MongoDB is connected
     if (mongoose.connection.readyState !== 1) {
-      console.log('MongoDB connection state:', mongoose.connection.readyState);
-      await mongoose.connect('mongodb+srv://codeyogiai:marriage@marriage.eqyb7uf.mongodb.net/?retryWrites=true&w=majority&appName=marriage');
+      console.log("MongoDB connection state:", mongoose.connection.readyState);
+      await mongoose.connect(
+        "mongodb+srv://codeyogiai:marriage@marriage.eqyb7uf.mongodb.net/?retryWrites=true&w=majority&appName=marriage",
+      );
     }
-    
-    // First check if advocate exists with name and password
-    let alladvocate = await advocate.findOne({ name, password }).maxTimeMS(5000);
-    
-    // If advocate doesn't exist, create new one
-    if (!alladvocate) {
-      alladvocate = new advocate({
-        name,
-        district,
-        phone,
-        courtAddress,
-        password
-      });
-      await alladvocate.save();
-      console.log('New advocate created:', alladvocate);
-    }
-    
-    // If still no advocate found, show error
-    if (!alladvocate) {
-      return res.send('Error creating advocate account');
-    }
-    
-    // Filter users by advocate's district
-    const allUsers = await user.find({ district: alladvocate.district }).maxTimeMS(5000);
-    let allCards = '';
 
-    for(const userData of allUsers) {
-      const hasOtherCaste = userData.boy.caste === 'Other' || userData.girl.caste === 'Other';
-      const starIcon = hasOtherCaste ? '<div class="star-icon">⭐⭐⭐</div>' : '';
-      
+    // First check if advocate exists with name and password
+    let alladvocate = await advocate
+      .findOne({ name, password })
+      .maxTimeMS(5000);
+
+    // Filter users by advocate's district
+    const allUsers = await user.find({ district: district }).maxTimeMS(5000);
+    let allCards = "";
+    if (allUsers.length === 0) {
+      return res.send("No matches found for your district.");
+    }
+    console.log(allUsers[0]);
+
+    for (const userData of allUsers) {
+      const hasOtherCaste =
+        userData.boy.caste === "Other" || userData.girl.caste === "Other";
+      const starIcon = hasOtherCaste
+        ? '<div class="star-icon">⭐⭐⭐</div>'
+        : "";
+
       allCards += `
       <div class="match-card">
         ${starIcon}
@@ -226,20 +222,17 @@ app.post('/registerad', async (req, res) => {
   } catch (error) {
     res.status(500).send("Error fetching matches: " + error.message);
   }
-})
+});
 
 async function newad(name, password) {
   const newadvocate = new advocate({
     name: name,
-    password: password
+    password: password,
   });
   await newadvocate.save();
 }
 
 // Create a test advocate account
-
-
-
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
