@@ -38,17 +38,21 @@
 
             <div>
               <label for="mobile1" class="block text-sm font-semibold text-gray-700 mb-2">Mobile Number:</label>
-              <input type="number" id="mobile1" name="mobile1" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+              <input type="number" id="mobile1" name="mobile1" required maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0,10);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
             </div>
 
             <div>
               <label for="whatsapp1" class="block text-sm font-semibold text-gray-700 mb-2">WhatsApp Number:</label>
-              <input type="number" id="whatsapp1" name="whatsapp1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+              <input type="number" id="whatsapp1" name="whatsapp1" maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0,10);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+              <div class="mt-2">
+                <input type="checkbox" id="sameAsMobile1" onchange="copyMobileToWhatsApp(1)" class="mr-2">
+                <label for="sameAsMobile1" class="text-sm text-gray-600">Same as mobile number</label>
+              </div>
             </div>
 
             <div>
               <label for="aadhar1" class="block text-sm font-semibold text-gray-700 mb-2">Aadhar Card:</label>
-              <input type="number" id="aadhar1" name="aadhar1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+              <input type="number" id="aadhar1" name="aadhar1" maxlength="12" oninput="if(this.value.length > 12) this.value = this.value.slice(0,12);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
             </div>
 
             <div>
@@ -89,17 +93,21 @@
 
             <div>
               <label for="mobile2" class="block text-sm font-semibold text-gray-700 mb-2">Mobile Number:</label>
-              <input type="number" id="mobile2" name="mobile2" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
+              <input type="number" id="mobile2" name="mobile2" required maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0,10);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
             </div>
 
             <div>
               <label for="whatsapp2" class="block text-sm font-semibold text-gray-700 mb-2">WhatsApp Number:</label>
-              <input type="number" id="whatsapp2" name="whatsapp2" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
+              <input type="number" id="whatsapp2" name="whatsapp2" maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0,10);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
+              <div class="mt-2">
+                <input type="checkbox" id="sameAsMobile2" onchange="copyMobileToWhatsApp(2)" class="mr-2">
+                <label for="sameAsMobile2" class="text-sm text-gray-600">Same as mobile number</label>
+              </div>
             </div>
 
             <div>
               <label for="adhar2" class="block text-sm font-semibold text-gray-700 mb-2">Aadhar Card:</label>
-              <input type="number" id="adhar2" name="adhar2" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
+              <input type="number" id="adhar2" name="adhar2" maxlength="12" oninput="if(this.value.length > 12) this.value = this.value.slice(0,12);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
             </div>
 
             <div>
@@ -126,5 +134,34 @@
         </div>
       </form>
     </div>
+  <script>
+      function copyMobileToWhatsApp(person) {
+        const mobileId = 'mobile' + person;
+        const whatsappId = 'whatsapp' + person;
+        const checkboxId = 'sameAsMobile' + person;
+        
+        const mobileInput = document.getElementById(mobileId);
+        const whatsappInput = document.getElementById(whatsappId);
+        const checkbox = document.getElementById(checkboxId);
+        
+        if (checkbox.checked) {
+          whatsappInput.value = mobileInput.value;
+          whatsappInput.readOnly = true;
+          
+          // Add event listener to mobile input to sync changes
+          mobileInput.addEventListener('input', function() {
+            whatsappInput.value = this.value;
+          });
+        } else {
+          whatsappInput.readOnly = false;
+          whatsappInput.value = '';
+          
+          // Remove event listener
+          mobileInput.removeEventListener('input', function() {
+            whatsappInput.value = this.value;
+          });
+        }
+      }
+    </script>
   </body>
 </html>
