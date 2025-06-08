@@ -4,248 +4,109 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marriage Application</title>
-    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <header id="header">
-      <nav style="display: flex; gap: 20px; padding: 0 10px">
-        <a class='nav-link' href='/'>Home</a>
-        <a class='nav-link' href='/advocate'>Advocate</a>
+  <body class="min-h-screen bg-gradient-to-br from-red-50 to-red-100" style="background-image: url('https://i.ibb.co/9H4WkYYs/IMG-20250502-WA0003.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+    <header class="w-full bg-red-600 shadow-lg">
+      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/">Home</a>
+        <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/advocate">Advocate</a>
       </nav>
     </header>
 
-    <main>
-      <p></p>
-      <section id="upper" class="search-section">
-        <h2>विवाह के लिए आवेदन</h2>
-        <form id="jobForm">
-          <div class="form-group">
-            <label for="district">District</label>
-            <select required name="district" id="district">
-              <option disabled value="no" selected>Select District</option>
-                        <option value="agra">Agra</option>
-          <option value="aligarh">Aligarh</option>
-          <option value="allahabad">Allahabad</option>
-          <option value="ambedkarnagar">Ambedkarnagar</option>
-          <option value="amu">Amroha</option>
-          <option value="auraiya">Auraiya</option>
-          <option value="ayodhya">Ayodhya</option>
-          <option value="badayun">Badaun</option>
-          <option value="bahraich">Bahraich</option>
-          <option value="banda">Banda</option>
-          <option value="barabanki">Barabanki</option>
-          <option value="bareilly">Bareilly</option>
-          <option value="bijnor">Bijnor</option>
-          <option value="bulandshahr">Bulandshahr</option>
-          <option value="chandauli">Chandauli</option>
-          <option value="chitrakoot">Chitrakoot</option>
-          <option value="deoria">Deoria</option>
-          <option value="etah">Etah</option>
-          <option value="etawah">Etawah</option>
-          <option value="faizabad">Faizabad</option>
-          <option value="farrukhabad">Farrukhabad</option>
-          <option value="fatehpur">Fatehpur</option>
-          <option value="firozabad">Firozabad</option>
-          <option value="gauriganj">Gauriganj</option>
-          <option value="ghaziabad">Ghaziabad</option>
-          <option value="ghazipur">Ghazipur</option>
-          <option value="gonda">Gonda</option>
-          <option value="gorakhpur">Gorakhpur</option>
-          <option value="hamirpur">Hamirpur</option>
-          <option value="hardoi">Hardoi</option>
-          <option value="hapur">Hapur</option>
-          <option value="jalaun">Jalaun</option>
-          <option value="jaunpur">Jaunpur</option>
-          <option value="jhansi">Jhansi</option>
-          <option value="kanpur">Kanpur</option>
-          <option value="kanpur_dehat">Kanpur Dehat</option>
-          <option value="kushinagar">Kushinagar</option>
-          <option value="lakhimpur_kheri">Lakhimpur Kheri</option>
-          <option value="lakhnau">Lucknow</option>
-          <option value="maharajganj">Maharajganj</option>
-          <option value="mahoba">Mahoba</option>
-          <option value="mandi">Mandi</option>
-          <option value="mathura">Mathura</option>
-          <option value="meerut">Meerut</option>
-          <option value="mirzapur">Mirzapur</option>
-          <option value="mau">Mau</option>
-          <option value="moradabad">Moradabad</option>
-          <option value="muzaffarnagar">Muzaffarnagar</option>
-          <option value="pilibhit">Pilibhit</option>
-          <option value="raebareli">Raebareli</option>
-          <option value="rampur">Rampur</option>
-          <option value="saharanpur">Saharanpur</option>
-          <option value="shahjahanpur">Shahjahanpur</option>
-          <option value="shrawasti">Shrawasti</option>
-          <option value="siddharthnagar">Siddharthnagar</option>
-          <option value="sitapur">Sitapur</option>
-          <option value="sonbhadra">Sonbhadra</option>
-          <option value="sultanpur">Sultanpur</option>
-              <option value="Shamli">Shamli</option>
-              <option value="unnao">Unnao</option>
-          <option value="varanasi">Varanasi</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="caste">Caste</label>
-            <select required name="caste" id="caste">
-              <option disabled value="no" selected>Select Caste</option>
-              <option value="Same caste">Same Caste</option>
-              <option value="Other Caste">Other Caste</option>
+    <main class="container mx-auto px-4 py-8 flex-grow">
+      <div class="max-w-md mx-auto mt-16 md:mt-24">
+        <section class="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-6 md:p-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-800 bg-red-200 py-3 rounded-lg">विवाह के लिए आवेदन</h2>
 
-            </select>
-          </div>
+          <form id="jobForm" class="space-y-6">
+            <div class="form-group">
+              <label for="district" class="block text-sm font-semibold text-gray-700 mb-2">District</label>
+              <select required name="district" id="district" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors bg-white">
+                <option disabled value="no" selected>Select District</option>
+                <option value="agra">Agra</option>
+                <option value="aligarh">Aligarh</option>
+                <option value="allahabad">Allahabad</option>
+                <option value="ambedkarnagar">Ambedkarnagar</option>
+                <option value="amu">Amroha</option>
+                <option value="auraiya">Auraiya</option>
+                <option value="ayodhya">Ayodhya</option>
+                <option value="badayun">Badaun</option>
+                <option value="bahraich">Bahraich</option>
+                <option value="banda">Banda</option>
+                <option value="barabanki">Barabanki</option>
+                <option value="bareilly">Bareilly</option>
+                <option value="bijnor">Bijnor</option>
+                <option value="bulandshahr">Bulandshahr</option>
+                <option value="chandauli">Chandauli</option>
+                <option value="chitrakoot">Chitrakoot</option>
+                <option value="deoria">Deoria</option>
+                <option value="etah">Etah</option>
+                <option value="etawah">Etawah</option>
+                <option value="faizabad">Faizabad</option>
+                <option value="farrukhabad">Farrukhabad</option>
+                <option value="fatehpur">Fatehpur</option>
+                <option value="firozabad">Firozabad</option>
+                <option value="gauriganj">Gauriganj</option>
+                <option value="ghaziabad">Ghaziabad</option>
+                <option value="ghazipur">Ghazipur</option>
+                <option value="gonda">Gonda</option>
+                <option value="gorakhpur">Gorakhpur</option>
+                <option value="hamirpur">Hamirpur</option>
+                <option value="hardoi">Hardoi</option>
+                <option value="hapur">Hapur</option>
+                <option value="jalaun">Jalaun</option>
+                <option value="jaunpur">Jaunpur</option>
+                <option value="jhansi">Jhansi</option>
+                <option value="kanpur">Kanpur</option>
+                <option value="kanpur_dehat">Kanpur Dehat</option>
+                <option value="kushinagar">Kushinagar</option>
+                <option value="lakhimpur_kheri">Lakhimpur Kheri</option>
+                <option value="lakhnau">Lucknow</option>
+                <option value="maharajganj">Maharajganj</option>
+                <option value="mahoba">Mahoba</option>
+                <option value="mandi">Mandi</option>
+                <option value="mathura">Mathura</option>
+                <option value="meerut">Meerut</option>
+                <option value="mirzapur">Mirzapur</option>
+                <option value="mau">Mau</option>
+                <option value="moradabad">Moradabad</option>
+                <option value="muzaffarnagar">Muzaffarnagar</option>
+                <option value="pilibhit">Pilibhit</option>
+                <option value="raebareli">Raebareli</option>
+                <option value="rampur">Rampur</option>
+                <option value="saharanpur">Saharanpur</option>
+                <option value="shahjahanpur">Shahjahanpur</option>
+                <option value="shrawasti">Shrawasti</shrawasti>
+                <option value="siddharthnagar">Siddharthnagar</option>
+                <option value="sitapur">Sitapur</option>
+                <option value="sonbhadra">Sonbhadra</option>
+                <option value="sultanpur">Sultanpur</option>
+                <option value="Shamli">Shamli</option>
+                <option value="unnao">Unnao</option>
+                <option value="varanasi">Varanasi</option>
+              </select>
+            </div>
 
-          <button type="button" class="search-btn" onclick="window.location.href='/register'">
-            submit
-          </button>
-        </form>
-      </section>
+            <div class="form-group">
+              <label for="caste" class="block text-sm font-semibold text-gray-700 mb-2">Caste</label>
+              <select required name="caste" id="caste" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors bg-white">
+                <option disabled value="no" selected>Select Caste</option>
+                <option value="Same caste">Same Caste</option>
+                <option value="Other Caste">Other Caste</option>
+              </select>
+            </div>
 
-      <section id="job-list" class="job-list"></section>
+            <button type="button" class="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105" onclick="window.location.href='/register'">
+              Submit
+            </button>
+          </form>
+        </section>
+      </div>
+
+      <section id="job-list" class="job-list mt-8"></section>
     </main>
 
-    <!-- Script section -->
     <script src="app.js"></script>
   </body>
 </html>
-<style>
-    /* Reset some default browser styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-body {
-  background-color: #f5f5f5;
-  width: 100%;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  min-height: 100vh;
-  background:url("https://i.ibb.co/9H4WkYYs/IMG-20250502-WA0003.jpg")no-repeat right center / cover;
-}
-
-header {
-  width: 100%;
-  padding: 15px;
-  background-color: #e30202;
-  color: white;
-  display:flex;
-  align-items: center;
-  justify-content: space-between;
-  position:relative;
-}
-
-header .nav-link {
-  color: white;
-  text-decoration: none;
-  font-size: 1.2em;
-}
-.nav-link + .nav-link{
-  display:absolute;
-  right:4;
-}
-
-main {
-  width: 100%;
-  max-width: 900px;
-  margin-top: 20px;
-  margin-bottom: auto;
-  padding: 20px;
-  flex-grow: 10;
-}
-
-.search-section {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top:40%;
-}
-
-.search-section h2 {
-  font-size: 20px;
-  text-align: center;
-  padding: 4px 10px;
-  margin-bottom: 15px;
-  color: black;
- background-color: #d47474;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.form-group select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.search-btn {
-  width: 100%;
-  padding: 10px;
-  background-color: #f33939;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.search-btn:hover {
-  background-color: #45a049;
-}
-
-.job-list {
-  margin-top: 20px;
-}
-
-.job-item {
-  background-color: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
-}
-
-.job-item h4 {
-  font-size: 1.2em;
-  color: #333;
-  margin-bottom: 5px;
-}
-
-.job-item p {
-  margin: 5px 0;
-  color: #666;
-}
-
-.job-item a {
-  color: #4caf50;
-  text-decoration: none;
-  margin-right: 10px;
-}
-
-.job-item a:hover {
-  text-decoration: underline;
-}
-
-@media (min-width:640px) {
-  #footimg{
-    display: none;
-  }
-}
-</style>
