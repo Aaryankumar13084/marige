@@ -35,6 +35,7 @@ app
 app.get("/registerme", async (req, res) => {
   try {
     const saveuser = new user({
+      district: req.query.district,
       boy: {
         name: req.query.name1,
         fatherName: req.query.fatherName1,
@@ -83,8 +84,8 @@ app.post('/registerad', async (req, res) => {
      return res.send('Invalid username or password');
     }
     
-    
-    const allUsers = await user.find({}).maxTimeMS(5000);
+    // Filter users by advocate's district
+    const allUsers = await user.find({ district: alladvocate.district }).maxTimeMS(5000);
     let allCards = '';
 
     for(const userData of allUsers) {
