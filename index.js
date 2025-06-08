@@ -79,7 +79,20 @@ app.post('/registerad', async (req, res) => {
       await mongoose.connect('mongodb+srv://codeyogiai:marriage@marriage.eqyb7uf.mongodb.net/?retryWrites=true&w=majority&appName=marriage');
     }
     
-    const alladvocate = await advocate.findOne({ name, password }).maxTimeMS(5000);
+    // First check if advocate exists
+    let alladvocate = await advocate.findOne({ name, password }).maxTimeMS(5000);
+    
+    // If advocate doesn't exist, create new one
+    if (!alladvocate) {
+      alladvocate = new advocate({
+        name,
+        district,
+        phone,
+        courtAddress,
+        password
+      });
+      await alladvocate.save();
+    }
     if (!alladvocate) {
      return res.send('Invalid username or password');
     }
