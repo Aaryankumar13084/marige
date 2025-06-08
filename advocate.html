@@ -22,86 +22,8 @@
           <form method="post" action="/registerad" id="jobForm" class="space-y-6">
             <div class="space-y-4">
               <div>
-                <label for="name" class="block text-lg font-semibold text-purple-600 mb-2">Name</label>
+                <label for="name" class="block text-lg font-semibold text-purple-600 mb-2">Username</label>
                 <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors" />
-              </div>
-
-              <div>
-                <label for="district" class="block text-lg font-semibold text-purple-600 mb-2">District</label>
-                <select id="district" name="district" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors bg-white">
-                  <option disabled value="" selected>Select District</option>
-                  <option value="agra">Agra</option>
-                  <option value="aligarh">Aligarh</option>
-                  <option value="allahabad">Allahabad</option>
-                  <option value="ambedkarnagar">Ambedkarnagar</option>
-                  <option value="amu">Amroha</option>
-                  <option value="auraiya">Auraiya</option>
-                  <option value="ayodhya">Ayodhya</option>
-                  <option value="badayun">Badaun</option>
-                  <option value="bahraich">Bahraich</option>
-                  <option value="banda">Banda</option>
-                  <option value="barabanki">Barabanki</option>
-                  <option value="bareilly">Bareilly</option>
-                  <option value="bijnor">Bijnor</option>
-                  <option value="bulandshahr">Bulandshahr</option>
-                  <option value="chandauli">Chandauli</option>
-                  <option value="chitrakoot">Chitrakoot</option>
-                  <option value="deoria">Deoria</option>
-                  <option value="etah">Etah</option>
-                  <option value="etawah">Etawah</option>
-                  <option value="faizabad">Faizabad</option>
-                  <option value="farrukhabad">Farrukhabad</option>
-                  <option value="fatehpur">Fatehpur</option>
-                  <option value="firozabad">Firozabad</option>
-                  <option value="gauriganj">Gauriganj</option>
-                  <option value="ghaziabad">Ghaziabad</option>
-                  <option value="ghazipur">Ghazipur</option>
-                  <option value="gonda">Gonda</option>
-                  <option value="gorakhpur">Gorakhpur</option>
-                  <option value="hamirpur">Hamirpur</option>
-                  <option value="hardoi">Hardoi</option>
-                  <option value="hapur">Hapur</option>
-                  <option value="jalaun">Jalaun</option>
-                  <option value="jaunpur">Jaunpur</option>
-                  <option value="jhansi">Jhansi</option>
-                  <option value="kanpur">Kanpur</option>
-                  <option value="kanpur_dehat">Kanpur Dehat</option>
-                  <option value="kushinagar">Kushinagar</option>
-                  <option value="lakhimpur_kheri">Lakhimpur Kheri</option>
-                  <option value="lakhnau">Lucknow</option>
-                  <option value="maharajganj">Maharajganj</option>
-                  <option value="mahoba">Mahoba</option>
-                  <option value="mandi">Mandi</option>
-                  <option value="mathura">Mathura</option>
-                  <option value="meerut">Meerut</option>
-                  <option value="mirzapur">Mirzapur</option>
-                  <option value="mau">Mau</option>
-                  <option value="moradabad">Moradabad</option>
-                  <option value="muzaffarnagar">Muzaffarnagar</option>
-                  <option value="pilibhit">Pilibhit</option>
-                  <option value="raebareli">Raebareli</option>
-                  <option value="rampur">Rampur</option>
-                  <option value="saharanpur">Saharanpur</option>
-                  <option value="shahjahanpur">Shahjahanpur</option>
-                  <option value="shrawasti">Shrawasti</option>
-                  <option value="siddharthnagar">Siddharthnagar</option>
-                  <option value="sitapur">Sitapur</option>
-                  <option value="sonbhadra">Sonbhadra</option>
-                  <option value="sultanpur">Sultanpur</option>
-                  <option value="Shamli">Shamli</option>
-                  <option value="unnao">Unnao</option>
-                  <option value="varanasi">Varanasi</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="phone" class="block text-lg font-semibold text-purple-600 mb-2">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0,10);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors" />
-              </div>
-
-              <div>
-                <label for="courtAddress" class="block text-lg font-semibold text-purple-600 mb-2">Court Address</label>
-                <textarea id="courtAddress" name="courtAddress" required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors resize-vertical"></textarea>
               </div>
 
               <div>

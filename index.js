@@ -70,7 +70,7 @@ app.get('/advocate', (req, res) => {
 
 app.post('/registerad', async (req, res) => {
   try {
-    const { name, district, phone, courtAddress, password } = req.body;
+    const { name, password } = req.body;
     
     // Check if MongoDB is connected
     if (mongoose.connection.readyState !== 1) {
