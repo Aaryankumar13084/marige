@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
+  district: String,
   boy: {
     name: String,
     fatherName: String,
@@ -10,7 +11,6 @@ const userSchema = new mongoose.Schema({
     aadhar: String,
     caste: String,
     age: Number,
-    district: String,
   },
   girl: {
     name: String,
@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema({
     aadhar: String,
     caste: String,
     age: Number,
-    district: String,
   },
 });
 

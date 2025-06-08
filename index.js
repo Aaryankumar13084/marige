@@ -35,6 +35,7 @@ app
 app.get("/registerme", async (req, res) => {
   try {
     const saveuser = new user({
+      district: req.query.district,
       boy: {
         name: req.query.name1,
         fatherName: req.query.fatherName1,
@@ -44,7 +45,6 @@ app.get("/registerme", async (req, res) => {
         aadhar: req.query.aadhar1,
         caste: req.query.cast1,
         age: req.query.age1,
-        district: req.query.district1,
       },
       girl: {
         name: req.query.name2,
@@ -55,7 +55,6 @@ app.get("/registerme", async (req, res) => {
         aadhar: req.query.adhar2,
         caste: req.query.cast2,
         age: req.query.age2,
-        district: req.query.district2,
       },
     });
 
@@ -85,13 +84,8 @@ app.post('/registerad', async (req, res) => {
      return res.send('Invalid username or password');
     }
     
-    // Filter users by advocate's district (check both boy and girl districts)
-    const allUsers = await user.find({ 
-      $or: [
-        { "boy.district": alladvocate.district },
-        { "girl.district": alladvocate.district }
-      ]
-    }).maxTimeMS(5000);
+    // Filter users by advocate's district
+    const allUsers = await user.find({ district: alladvocate.district }).maxTimeMS(5000);
     let allCards = '';
 
     for(const userData of allUsers) {
@@ -113,7 +107,6 @@ app.post('/registerad', async (req, res) => {
           <div class="info"><span class="label">Aadhar:</span> ${userData.boy.aadhar}</div>
           <div class="info"><span class="label">Caste:</span> ${userData.boy.caste}</div>
           <div class="info"><span class="label">Age:</span> ${userData.boy.age}</div>
-          <div class="info"><span class="label">District:</span> ${userData.boy.district}</div>
         </div>
 
         <div class="section">
@@ -126,7 +119,11 @@ app.post('/registerad', async (req, res) => {
           <div class="info"><span class="label">Aadhar:</span> ${userData.girl.aadhar}</div>
           <div class="info"><span class="label">Caste:</span> ${userData.girl.caste}</div>
           <div class="info"><span class="label">Age:</span> ${userData.girl.age}</div>
-          <div class="info"><span class="label">District:</span> ${userData.girl.district}</div>
+        </div>
+        
+        <div class="section">
+          <h3>District Information</h3>
+          <div class="info"><span class="label">District:</span> ${userData.district}</div>
         </div>
       </div>`;
     }
