@@ -77,8 +77,12 @@ app.post('/registerad', async (req, res) => {
     let allCards = '';
 
     for(const userData of allUsers) {
+      const hasOtherCaste = userData.boy.caste === 'Other' || userData.girl.caste === 'Other';
+      const starIcon = hasOtherCaste ? '<div class="star-icon">⭐⭐⭐</div>' : '';
+      
       allCards += `
       <div class="match-card">
+        ${starIcon}
         <div class="title">Shaadi Match Detail</div>
 
         <div class="section">
@@ -126,6 +130,14 @@ app.post('/registerad', async (req, res) => {
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .star-icon {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 16px;
+      color: #FFD700;
     }
     .title {
       text-align: center;
