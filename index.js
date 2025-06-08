@@ -11,9 +11,8 @@ const mongoose = require("mongoose");
 
 mongoose
   .connect('mongodb+srv://codeyogiai:marriage@marriage.eqyb7uf.mongodb.net/?retryWrites=true&w=majority&appName=marriage', {
-    serverSelectionTimeoutMS: 5000,
+    serverSelectionTimeoutMS: 10000,
     socketTimeoutMS: 45000,
-    bufferMaxEntries: 0,
     maxPoolSize: 10,
     minPoolSize: 5
   })
@@ -75,7 +74,8 @@ app.post('/registerad', async (req, res) => {
     
     // Check if MongoDB is connected
     if (mongoose.connection.readyState !== 1) {
-      return res.status(500).send('Database connection not ready. Please try again.');
+      console.log('MongoDB connection state:', mongoose.connection.readyState);
+      await mongoose.connect('mongodb+srv://codeyogiai:marriage@marriage.eqyb7uf.mongodb.net/?retryWrites=true&w=majority&appName=marriage');
     }
     
     const alladvocate = await advocate.findOne({ name, password }).maxTimeMS(5000);
