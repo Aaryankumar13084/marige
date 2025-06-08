@@ -128,10 +128,12 @@ app.post('/registerad', async (req, res) => {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shaadi Match Details</title>
+  
+    <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background: lightgray;
       padding: 20px;
     }
     .match-card {
@@ -180,6 +182,13 @@ app.post('/registerad', async (req, res) => {
     }
   </style>
 </head>
+  <header class="w-full bg-red-600 shadow-lg">
+      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/">Home</a>
+        <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/advocate">Advocate</a>
+      </nav>
+    </header>
+    
 <body>
   ${allCards}
 </body>
