@@ -10,7 +10,13 @@ const user = require("./module/user");
 const mongoose = require("mongoose");
 
 mongoose
-  .connect('mongodb+srv://codeyogiai:marriage@marriage.eqyb7uf.mongodb.net/?retryWrites=true&w=majority&appName=marriage')
+  .connect('mongodb+srv://codeyogiai:marriage@marriage.eqyb7uf.mongodb.net/?retryWrites=true&w=majority&appName=marriage', {
+    serverSelectionTimeoutMS: 5000,
+    socketTimeoutMS: 45000,
+    bufferMaxEntries: 0,
+    maxPoolSize: 10,
+    minPoolSize: 5
+  })
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -65,15 +71,20 @@ app.get('/advocate', (req, res) => {
 
 app.post('/registerad', async (req, res) => {
   try {
-
     const { name, password } = req.body;
-    const alladvocate = await advocate.findOne({ name, password })
+    
+    // Check if MongoDB is connected
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(500).send('Database connection not ready. Please try again.');
+    }
+    
+    const alladvocate = await advocate.findOne({ name, password }).maxTimeMS(5000);
     if (!alladvocate) {
      return res.send('Invalid username or password');
     }
     
     
-    const allUsers = await user.find({});
+    const allUsers = await user.find({}).maxTimeMS(5000);
     let allCards = '';
 
     for(const userData of allUsers) {
