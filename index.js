@@ -55,7 +55,7 @@ app.get("/registerme", async (req, res) => {
         motherName: req.query.motherName2,
         mobile: req.query.mobile2,
         whatsapp: req.query.whatsapp2,
-        aadhar: req.query.adhar2,
+        aadhar: req.query.aadhar2,
         caste: req.query.cast2,
         age: req.query.age2,
       },
