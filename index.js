@@ -32,13 +32,24 @@ app
   })
 
   .get("/register", (req, res) => {
-    res.sendFile(path.join(__dirname, "register.html"));
+    const { district, caste } = req.query;
+    let html = require('fs').readFileSync(path.join(__dirname, "register.html"), 'utf8');
+    
+    if (district) {
+      html = html.replace('name="district"', `name="district" value="${district}"`);
+    }
+    if (caste) {
+      html = html.replace('name="selectedCaste"', `name="selectedCaste" value="${caste}"`);
+    }
+    
+    res.send(html);
   });
 
 app.get("/registerme", async (req, res) => {
   try {
     const saveuser = new user({
       district: req.query.district,
+      selectedCaste: req.query.selectedCaste,
       boy: {
         name: req.query.name1,
         fatherName: req.query.fatherName1,
@@ -98,8 +109,7 @@ app.post("/registerad", async (req, res) => {
     console.log(allUsers[0]);
 
     for (const userData of allUsers) {
-      const hasOtherCaste =
-        userData.boy.caste === "Other" || userData.girl.caste === "Other";
+      const hasOtherCaste = userData.selectedCaste === "Other Caste";
       const starIcon = hasOtherCaste
         ? '<div class="star-icon">⭐⭐⭐</div>'
         : "";

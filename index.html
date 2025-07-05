@@ -97,7 +97,7 @@
               </select>
             </div>
 
-            <button type="button" class="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105" onclick="window.location.href='/register'">
+            <button type="button" class="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105" onclick="submitForm()">
               Submit
             </button>
           </form>
@@ -107,6 +107,19 @@
       <section id="job-list" class="job-list mt-8"></section>
     </main>
 
+    <script>
+      function submitForm() {
+        const district = document.getElementById('district').value;
+        const caste = document.getElementById('caste').value;
+        
+        if (district === 'no' || caste === 'no') {
+          alert('Please select both District and Caste');
+          return;
+        }
+        
+        window.location.href = `/register?district=${district}&caste=${caste}`;
+      }
+    </script>
     <script src="app.js"></script>
   </body>
 </html>

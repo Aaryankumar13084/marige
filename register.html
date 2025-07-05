@@ -16,6 +16,8 @@
 
     <div class="container mx-auto px-4 py-8">
       <form action="/registerme" method="get" class="max-w-4xl mx-auto">
+        <input type="hidden" name="district" id="hiddenDistrict" value="">
+        <input type="hidden" name="selectedCaste" id="hiddenCaste" value="">
           <!-- Boy's Information -->
         <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-6 md:p-8 mb-8">
           <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-white bg-gray-800/80 py-3 rounded-lg">लड़के की जानकारी</h2>
@@ -209,10 +211,10 @@
                 <option value="Kurmi">Kurmi</option>
                 <option value="Kayastha">Kayastha</option>
                 <option value="Baniya">Baniya</option>
-                <option value="Thakur">Thakur</Thakur>
+                <option value="Thakur">Thakur</option>
                 <option value="Agarwal">Agarwal</option>
                 <option value="Gupta">Gupta</option>
-                <option value="Sharma">Sharma</Sharma>
+                <option value="Sharma">Sharma</option>
                 <option value="Verma">Verma</option>
                 <option value="Chamar">Chamar</option>
                 <option value="Scheduled Caste">Scheduled Caste</option>
@@ -256,34 +258,34 @@
               <option value="hapur">Hapur</option>
               <option value="jalaun">Jalaun</option>
               <option value="jaunpur">Jaunpur</option>
-              <option value="jhansi">Jhansi</jhansi>
+              <option value="jhansi">Jhansi</option>
               <option value="kanpur">Kanpur</option>
               <option value="kanpur_dehat">Kanpur Dehat</option>
               <option value="kushinagar">Kushinagar</option>
               <option value="lakhimpur_kheri">Lakhimpur Kheri</option>
               <option value="lakhnau">Lucknow</option>
               <option value="maharajganj">Maharajganj</option>
-              <option value="mahoba">Mahoba</mahoba>
+              <option value="mahoba">Mahoba</option>
               <option value="mandi">Mandi</option>
               <option value="mathura">Mathura</option>
               <option value="meerut">Meerut</option>
-              <option value="mirzapur">Mirzapur</Mirzapur>
+              <option value="mirzapur">Mirzapur</option>
               <option value="mau">Mau</option>
               <option value="moradabad">Moradabad</option>
               <option value="muzaffarnagar">Muzaffarnagar</option>
-              <option value="pilibhit">Pilibhit</Pilibhit>
+              <option value="pilibhit">Pilibhit</option>
               <option value="raebareli">Raebareli</option>
-              <option value="rampur">Rampur</rampur>
+              <option value="rampur">Rampur</option>
               <option value="saharanpur">Saharanpur</option>
-              <option value="shahjahanpur">Shahjahanpur</shahjahanpur>
+              <option value="shahjahanpur">Shahjahanpur</option>
               <option value="shrawasti">Shrawasti</option>
-              <option value="siddharthnagar">Siddharthnagar</Siddharthnagar>
-              <option value="sitapur">Sitapur</sitapur>
-              <option value="sonbhadra">Sonbhadra</sonbhadra>
-              <option value="sultanpur">Sultanpur</Sultanpur>
-              <option value="Shamli">Shamli</Shamli>
-              <option value="unnao">Unnao</unnao>
-              <option value="varanasi">Varanasi</varanasi>
+              <option value="siddharthnagar">Siddharthnagar</option>
+              <option value="sitapur">Sitapur</option>
+              <option value="sonbhadra">Sonbhadra</option>
+              <option value="sultanpur">Sultanpur</option>
+              <option value="Shamli">Shamli</option>
+              <option value="unnao">Unnao</option>
+              <option value="varanasi">Varanasi</option>
             </select>
             </div>
 
@@ -303,6 +305,20 @@
       </form>
     </div>
   <script>
+      // Get URL parameters and populate hidden fields
+      window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const district = urlParams.get('district');
+        const caste = urlParams.get('caste');
+        
+        if (district) {
+          document.getElementById('hiddenDistrict').value = district;
+        }
+        if (caste) {
+          document.getElementById('hiddenCaste').value = caste;
+        }
+      };
+
       function copyMobileToWhatsApp(person) {
         const mobileId = 'mobile' + person;
         const whatsappId = 'whatsapp' + person;

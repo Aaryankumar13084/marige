@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   district: String,
+  selectedCaste: String,
   boy: {
     name: String,
     fatherName: String,
