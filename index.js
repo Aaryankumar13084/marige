@@ -87,6 +87,16 @@ app.get("/advocate", (req, res) => {
   res.sendFile(path.join(__dirname, "advocate.html"));
 });
 
+app.delete("/delete-match/:id", async (req, res) => {
+  try {
+    const matchId = req.params.id;
+    await user.findByIdAndDelete(matchId);
+    res.json({ success: true, message: 'Match deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 app.post("/registerad", async (req, res) => {
   try {
     const { name, district, phone, courtAddress, password } = req.body;
@@ -119,7 +129,7 @@ app.post("/registerad", async (req, res) => {
         : "";
 
       allCards += `
-      <div class="match-card">
+      <div class="match-card" id="match-${userData._id}">
         ${starIcon}
         <div class="title">Shaadi Match Detail</div>
 
@@ -151,6 +161,8 @@ app.post("/registerad", async (req, res) => {
           <h3>District Information</h3>
           <div class="info"><span class="label">District:</span> ${userData.district}</div>
         </div>
+        
+        <div class="delete-icon" onclick="deleteMatch('${userData._id}')">🗑️</div>
       </div>`;
     }
 
@@ -187,6 +199,28 @@ app.post("/registerad", async (req, res) => {
       right: 15px;
       font-size: 16px;
       color: #FFD700;
+    }
+    .delete-icon {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      color: #ff4444;
+      background: white;
+      border: 2px solid #ff4444;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .delete-icon:hover {
+      background: #ff4444;
+      color: white;
+      transform: scale(1.1);
     }
     .title {
       text-align: center;
@@ -229,6 +263,28 @@ app.post("/registerad", async (req, res) => {
   <div class="main-content">
     ${allCards}
   </div>
+  
+  <script>
+    function deleteMatch(matchId) {
+      if (confirm('Are you sure you want to delete this match?')) {
+        fetch('/delete-match/' + matchId, {
+          method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            document.getElementById('match-' + matchId).remove();
+            alert('Match deleted successfully!');
+          } else {
+            alert('Error deleting match: ' + data.message);
+          }
+        })
+        .catch(error => {
+          alert('Error: ' + error.message);
+        });
+      }
+    }
+  </script>
 </body>
 </html>`;
 
