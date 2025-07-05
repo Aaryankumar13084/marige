@@ -47,9 +47,13 @@ app
 
 app.get("/registerme", async (req, res) => {
   try {
+    // Handle district field in case it comes as an array
+    const district = Array.isArray(req.query.district) ? req.query.district[0] : req.query.district;
+    const selectedCaste = Array.isArray(req.query.selectedCaste) ? req.query.selectedCaste[0] : req.query.selectedCaste;
+    
     const saveuser = new user({
-      district: req.query.district,
-      selectedCaste: req.query.selectedCaste,
+      district: district,
+      selectedCaste: selectedCaste,
       boy: {
         name: req.query.name1,
         fatherName: req.query.fatherName1,
