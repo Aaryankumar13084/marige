@@ -77,9 +77,98 @@ app.get("/registerme", async (req, res) => {
     });
 
     await saveuser.save();
-    res.send("Match details saved successfully!");
+    
+    // Success page with attractive UI
+    const successHtml = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Registration Successful</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+          40% { transform: translateY(-30px); }
+          60% { transform: translateY(-15px); }
+        }
+        .bounce { animation: bounce 2s infinite; }
+        
+        @keyframes fadeIn {
+          from { opacity: 0; transform: scale(0.8); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .fade-in { animation: fadeIn 0.8s ease-out; }
+      </style>
+    </head>
+    <body class="min-h-screen bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center">
+      <div class="max-w-md mx-auto p-8">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 text-center fade-in">
+          <div class="bounce text-6xl mb-6">🎉</div>
+          <h1 class="text-3xl font-bold text-green-600 mb-4">Registration Successful!</h1>
+          <p class="text-gray-600 mb-6">आपका विवाह का विवरण सफलतापूर्वक सेव हो गया है!</p>
+          <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+            <p class="text-green-800 font-semibold">✅ Match details saved successfully</p>
+          </div>
+          <a href="/" class="inline-block bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+            Go Back to Home
+          </a>
+        </div>
+      </div>
+    </body>
+    </html>`;
+    
+    res.send(successHtml);
   } catch (err) {
-    res.status(500).send("Error saving match: " + err.message);
+    
+    // Error page with attractive UI
+    const errorHtml = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Registration Error</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+          20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+        .shake { animation: shake 0.5s ease-in-out; }
+        
+        @keyframes fadeIn {
+          from { opacity: 0; transform: scale(0.8); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .fade-in { animation: fadeIn 0.8s ease-out; }
+      </style>
+    </head>
+    <body class="min-h-screen bg-gradient-to-br from-red-50 to-red-100 flex items-center justify-center">
+      <div class="max-w-md mx-auto p-8">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 text-center fade-in">
+          <div class="shake text-6xl mb-6">❌</div>
+          <h1 class="text-3xl font-bold text-red-600 mb-4">Registration Failed!</h1>
+          <p class="text-gray-600 mb-6">रजिस्ट्रेशन में कोई समस्या आई है</p>
+          <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <p class="text-red-800 font-semibold">⚠️ Error: ${err.message}</p>
+          </div>
+          <div class="space-y-3">
+            <a href="/register" class="block bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+              Try Again
+            </a>
+            <a href="/" class="block bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+              Go Back to Home
+            </a>
+          </div>
+        </div>
+      </div>
+    </body>
+    </html>`;
+    
+    res.status(500).send(errorHtml);
   }
 });
 
@@ -118,7 +207,40 @@ app.post("/registerad", async (req, res) => {
     const allUsers = await user.find({ district: district }).maxTimeMS(5000);
     let allCards = "";
     if (allUsers.length === 0) {
-      return res.send("No matches found for your district.");
+      const noMatchHtml = `
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>No Matches Found</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+      </head>
+      <body class="min-h-screen bg-gradient-to-br from-yellow-50 to-orange-100">
+        <header class="w-full bg-red-600 shadow-lg">
+          <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/">Home</a>
+            <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/advocate">Advocate</a>
+          </nav>
+        </header>
+        <div class="flex items-center justify-center min-h-screen">
+          <div class="max-w-md mx-auto p-8">
+            <div class="bg-white rounded-2xl shadow-2xl p-8 text-center">
+              <div class="text-6xl mb-6">🔍</div>
+              <h1 class="text-3xl font-bold text-orange-600 mb-4">No Matches Found</h1>
+              <p class="text-gray-600 mb-6">आपके जिले में कोई मैच नहीं मिला</p>
+              <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-6">
+                <p class="text-orange-800 font-semibold">📍 District: ${district}</p>
+              </div>
+              <a href="/advocate" class="inline-block bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Try Another District
+              </a>
+            </div>
+          </div>
+        </div>
+      </body>
+      </html>`;
+      return res.send(noMatchHtml);
     }
     console.log(allUsers[0]);
 
