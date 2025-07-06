@@ -13,10 +13,14 @@ mongoose
   .connect(
     "mongodb+srv://codeyogiai:marriage@marriage.eqyb7uf.mongodb.net/?retryWrites=true&w=majority&appName=marriage",
     {
-      serverSelectionTimeoutMS: 10000,
-      socketTimeoutMS: 45000,
-      maxPoolSize: 10,
-      minPoolSize: 5,
+      serverSelectionTimeoutMS: 30000,
+      socketTimeoutMS: 0,
+      maxPoolSize: 1,
+      minPoolSize: 0,
+      maxIdleTimeMS: 30000,
+      connectTimeoutMS: 30000,
+      bufferMaxEntries: 0,
+      bufferCommands: false,
     },
   )
   .then(() => {
@@ -47,6 +51,23 @@ app
 
 app.post("/registerme", async (req, res) => {
   try {
+    // Ensure MongoDB connection
+    if (mongoose.connection.readyState !== 1) {
+      await mongoose.connect(
+        "mongodb+srv://codeyogiai:marriage@marriage.eqyb7uf.mongodb.net/?retryWrites=true&w=majority&appName=marriage",
+        {
+          serverSelectionTimeoutMS: 30000,
+          socketTimeoutMS: 0,
+          maxPoolSize: 1,
+          minPoolSize: 0,
+          maxIdleTimeMS: 30000,
+          connectTimeoutMS: 30000,
+          bufferMaxEntries: 0,
+          bufferCommands: false,
+        }
+      );
+    }
+
     // Handle district field in case it comes as an array
     const district = Array.isArray(req.body.district) ? req.body.district[0] : req.body.district;
     const selectedCaste = Array.isArray(req.body.selectedCaste) ? req.body.selectedCaste[0] : req.body.selectedCaste;
@@ -190,11 +211,21 @@ app.post("/registerad", async (req, res) => {
   try {
     const { name, district, phone, courtAddress, password } = req.body;
 
-    // Check if MongoDB is connected
+    // Ensure MongoDB connection
     if (mongoose.connection.readyState !== 1) {
       console.log("MongoDB connection state:", mongoose.connection.readyState);
       await mongoose.connect(
         "mongodb+srv://codeyogiai:marriage@marriage.eqyb7uf.mongodb.net/?retryWrites=true&w=majority&appName=marriage",
+        {
+          serverSelectionTimeoutMS: 30000,
+          socketTimeoutMS: 0,
+          maxPoolSize: 1,
+          minPoolSize: 0,
+          maxIdleTimeMS: 30000,
+          connectTimeoutMS: 30000,
+          bufferMaxEntries: 0,
+          bufferCommands: false,
+        }
       );
     }
 
