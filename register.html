@@ -7,6 +7,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="min-h-screen bg-gray-50" style="background:#f08181;">
+    
+    <!-- Loading Animation Screen -->
+    <div id="loadingScreen" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
+      <div class="text-center">
+        <video id="loadingVideo" autoplay muted class="max-w-sm max-h-96 rounded-lg shadow-2xl">
+          <source src="attached_assets/VID_20250706_203411_1751814269831.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="mt-4 text-white text-xl font-semibold">Loading...</div>
+        <div class="mt-2">
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto"></div>
+        </div>
+      </div>
+    </div>
+
     <header class="w-full bg-red-600 shadow-lg fixed top-0 left-0 z-50">
       <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
         <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/">Home</a>
@@ -173,6 +188,30 @@
       </form>
     </div>
   <script>
+      // Loading screen functionality
+      window.addEventListener('load', function() {
+        const loadingScreen = document.getElementById('loadingScreen');
+        const loadingVideo = document.getElementById('loadingVideo');
+        
+        // Hide loading screen when video ends or after 5 seconds (whichever comes first)
+        loadingVideo.addEventListener('ended', function() {
+          hideLoadingScreen();
+        });
+        
+        // Fallback: hide after 5 seconds even if video doesn't end
+        setTimeout(function() {
+          hideLoadingScreen();
+        }, 5000);
+        
+        function hideLoadingScreen() {
+          loadingScreen.style.opacity = '0';
+          loadingScreen.style.transition = 'opacity 0.5s ease-out';
+          setTimeout(function() {
+            loadingScreen.style.display = 'none';
+          }, 500);
+        }
+      });
+
       // Get URL parameters and populate hidden fields
       window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
