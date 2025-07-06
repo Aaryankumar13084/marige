@@ -7,15 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="min-h-screen bg-gray-50" style="background:#f08181;">
-    <header class="w-full bg-red-600 shadow-lg">
+    <header class="w-full bg-red-600 shadow-lg fixed top-0 left-0 z-50">
       <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
         <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/">Home</a>
         <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/advocate">Advocate</a>
       </nav>
     </header>
 
-    <div class="container mx-auto px-4 py-8">
-      <form action="/registerme" method="get" class="max-w-4xl mx-auto">
+    <div class="container mx-auto px-4 py-8 pt-24">
+      <form action="/registerme" method="GET" class="max-w-4xl mx-auto">
         <input type="hidden" name="district" id="hiddenDistrict" value="">
         <input type="hidden" name="selectedCaste" id="hiddenCaste" value="">
           <!-- Boy's Information -->
