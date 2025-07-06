@@ -9,15 +9,11 @@
   ],
   "routes": [
     {
-      "src": "/assets/VID_20250706_203411_1751814269831.mp4",
-      "dest": "/public/assets/VID_20250706_203411_1751814269831.mp4"
-    },
-    {
       "src": "/assets/(.*)",
       "dest": "/public/assets/$1"
     },
     {
-      "src": "/public/(.*)",
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|mp4|webm|ogg|mp3|wav|pdf))",
       "dest": "/public/$1"
     },
     {
