@@ -45,34 +45,34 @@ app
     res.send(html);
   });
 
-app.get("/registerme", async (req, res) => {
+app.post("/registerme", async (req, res) => {
   try {
     // Handle district field in case it comes as an array
-    const district = Array.isArray(req.query.district) ? req.query.district[0] : req.query.district;
-    const selectedCaste = Array.isArray(req.query.selectedCaste) ? req.query.selectedCaste[0] : req.query.selectedCaste;
+    const district = Array.isArray(req.body.district) ? req.body.district[0] : req.body.district;
+    const selectedCaste = Array.isArray(req.body.selectedCaste) ? req.body.selectedCaste[0] : req.body.selectedCaste;
     
     const saveuser = new user({
       district: district,
       selectedCaste: selectedCaste,
       boy: {
-        name: req.query.name1,
-        fatherName: req.query.fatherName1,
-        motherName: req.query.motherName1,
-        mobile: req.query.mobile1,
-        whatsapp: req.query.whatsapp1,
-        aadhar: req.query.aadhar1,
-        caste: req.query.cast1,
-        age: req.query.age1,
+        name: req.body.name1,
+        fatherName: req.body.fatherName1,
+        motherName: req.body.motherName1,
+        mobile: req.body.mobile1,
+        whatsapp: req.body.whatsapp1,
+        aadhar: req.body.aadhar1,
+        caste: req.body.cast1,
+        age: req.body.age1,
       },
       girl: {
-        name: req.query.name2,
-        fatherName: req.query.fatherName2,
-        motherName: req.query.motherName2,
-        mobile: req.query.mobile2,
-        whatsapp: req.query.whatsapp2,
-        aadhar: req.query.aadhar2,
-        caste: req.query.cast2,
-        age: req.query.age2,
+        name: req.body.name2,
+        fatherName: req.body.fatherName2,
+        motherName: req.body.motherName2,
+        mobile: req.body.mobile2,
+        whatsapp: req.body.whatsapp2,
+        aadhar: req.body.aadhar2,
+        caste: req.body.cast2,
+        age: req.body.age2,
       },
     });
 
