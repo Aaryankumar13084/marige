@@ -456,3 +456,8 @@ async function newad(name, password) {
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve static files from attached_assets directory
+app.use('/attached_assets', express.static(path.join(__dirname, 'attached_assets')));
