@@ -6,6 +6,7 @@ const advocate = require("./module/advocate");
 
 app.use(express.static(path.join(__dirname)));
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 const user = require("./module/user");
 const mongoose = require("mongoose");
