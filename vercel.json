@@ -9,12 +9,16 @@
   ],
   "routes": [
     {
-      "src": "/public/(.*)",
-      "dest": "/public/$1"
+      "src": "/assets/VID_20250706_203411_1751814269831.mp4",
+      "dest": "/public/assets/VID_20250706_203411_1751814269831.mp4"
     },
     {
       "src": "/assets/(.*)",
       "dest": "/public/assets/$1"
+    },
+    {
+      "src": "/public/(.*)",
+      "dest": "/public/$1"
     },
     {
       "src": "/(.*)",
