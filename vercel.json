@@ -9,8 +9,8 @@
   ],
   "routes": [
     {
-      "src": "/attached_assets/(.*)",
-      "dest": "/attached_assets/$1"
+      "src": "/assets/(.*)",
+      "dest": "/public/assets/$1"
     },
     {
       "src": "/(.*)",
@@ -19,7 +19,7 @@
   ],
   "functions": {
     "index.js": {
-      "includeFiles": "attached_assets/**"
+      "includeFiles": "public/**"
     }
   }
 }
