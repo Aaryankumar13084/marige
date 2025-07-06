@@ -19,7 +19,6 @@ mongoose
       minPoolSize: 0,
       maxIdleTimeMS: 30000,
       connectTimeoutMS: 30000,
-      bufferMaxEntries: 0,
       bufferCommands: false,
     },
   )
@@ -38,14 +37,14 @@ app
   .get("/register", (req, res) => {
     const { district, caste } = req.query;
     let html = require('fs').readFileSync(path.join(__dirname, "register.html"), 'utf8');
-    
+
     if (district) {
       html = html.replace('name="district"', `name="district" value="${district}"`);
     }
     if (caste) {
       html = html.replace('name="selectedCaste"', `name="selectedCaste" value="${caste}"`);
     }
-    
+
     res.send(html);
   });
 
@@ -62,7 +61,6 @@ app.post("/registerme", async (req, res) => {
           minPoolSize: 0,
           maxIdleTimeMS: 30000,
           connectTimeoutMS: 30000,
-          bufferMaxEntries: 0,
           bufferCommands: false,
         }
       );
@@ -71,7 +69,7 @@ app.post("/registerme", async (req, res) => {
     // Handle district field in case it comes as an array
     const district = Array.isArray(req.body.district) ? req.body.district[0] : req.body.district;
     const selectedCaste = Array.isArray(req.body.selectedCaste) ? req.body.selectedCaste[0] : req.body.selectedCaste;
-    
+
     const saveuser = new user({
       district: district,
       selectedCaste: selectedCaste,
@@ -98,7 +96,7 @@ app.post("/registerme", async (req, res) => {
     });
 
     await saveuser.save();
-    
+
     // Success page with attractive UI
     const successHtml = `
     <!DOCTYPE html>
@@ -115,7 +113,7 @@ app.post("/registerme", async (req, res) => {
           60% { transform: translateY(-15px); }
         }
         .bounce { animation: bounce 2s infinite; }
-        
+
         @keyframes fadeIn {
           from { opacity: 0; transform: scale(0.8); }
           to { opacity: 1; transform: scale(1); }
@@ -139,10 +137,10 @@ app.post("/registerme", async (req, res) => {
       </div>
     </body>
     </html>`;
-    
+
     res.send(successHtml);
   } catch (err) {
-    
+
     // Error page with attractive UI
     const errorHtml = `
     <!DOCTYPE html>
@@ -159,7 +157,7 @@ app.post("/registerme", async (req, res) => {
           20%, 40%, 60%, 80% { transform: translateX(10px); }
         }
         .shake { animation: shake 0.5s ease-in-out; }
-        
+
         @keyframes fadeIn {
           from { opacity: 0; transform: scale(0.8); }
           to { opacity: 1; transform: scale(1); }
@@ -188,7 +186,7 @@ app.post("/registerme", async (req, res) => {
       </div>
     </body>
     </html>`;
-    
+
     res.status(500).send(errorHtml);
   }
 });
@@ -222,8 +220,6 @@ app.post("/registerad", async (req, res) => {
           maxPoolSize: 1,
           minPoolSize: 0,
           maxIdleTimeMS: 30000,
-          connectTimeoutMS: 30000,
-          bufferMaxEntries: 0,
           bufferCommands: false,
         }
       );
@@ -309,12 +305,12 @@ app.post("/registerad", async (req, res) => {
           <div class="info"><span class="label">Caste:</span> ${userData.girl.caste}</div>
           <div class="info"><span class="label">Age:</span> ${userData.girl.age}</div>
         </div>
-        
+
         <div class="section">
           <h3>District Information</h3>
           <div class="info"><span class="label">District:</span> ${userData.district}</div>
         </div>
-        
+
         <div class="delete-icon" onclick="deleteMatch('${userData._id}')">🗑️</div>
       </div>`;
     }
@@ -325,7 +321,7 @@ app.post("/registerad", async (req, res) => {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shaadi Match Details</title>
-  
+
     <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -412,11 +408,11 @@ app.post("/registerad", async (req, res) => {
       <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/advocate">Advocate</a>
     </nav>
   </header>
-  
+
   <div class="main-content">
     ${allCards}
   </div>
-  
+
   <script>
     function deleteMatch(matchId) {
       if (confirm('Are you sure you want to delete this match?')) {
