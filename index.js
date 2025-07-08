@@ -4,9 +4,14 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const advocate = require("./module/advocate");
 
+// Static files middleware
 app.use(express.static(path.join(__dirname)));
-app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
+app.use('/attached_assets', express.static(path.join(__dirname, 'attached_assets')));
+
+// Body parser middleware
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const user = require("./module/user");
 const mongoose = require("mongoose");
@@ -458,9 +463,3 @@ async function newad(name, password) {
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/public', express.static('public'));
-
-// Serve static files from attached_assets directory
-app.use('/attached_assets', express.static(path.join(__dirname, 'attached_assets')));
