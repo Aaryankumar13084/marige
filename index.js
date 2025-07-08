@@ -283,7 +283,11 @@ app.post("/registerad", async (req, res) => {
       <div class="match-card" id="match-${userData._id}">
         ${starIcon}
         <div class="title">Shaadi Match Detail</div>
-
+          <div class="section">
+          <h3>District Information</h3>
+          <div class="info"><span class="label">District:</span> ${userData.district}</div>
+        </div>
+        
         <div class="section">
           <h3>Boy's Information</h3>
           <div class="info"><span class="label">Name:</span> ${userData.boy.name}</div>
@@ -308,10 +312,6 @@ app.post("/registerad", async (req, res) => {
           <div class="info"><span class="label">Age:</span> ${userData.girl.age}</div>
         </div>
 
-        <div class="section">
-          <h3>District Information</h3>
-          <div class="info"><span class="label">District:</span> ${userData.district}</div>
-        </div>
 
         <div class="delete-icon" onclick="deleteMatch('${userData._id}')">🗑️</div>
       </div>`;
