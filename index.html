@@ -11,16 +11,15 @@
     <!-- Loading Animation Screen -->
     <div id="loadingScreen" class="fixed inset-0 bg-black z-50 flex items-center justify-center">
       <div class="text-center">
-        <video id="loadingVideo" autoplay muted class="max-w-sm max-h-96 rounded-lg shadow-2xl">
-          <source src="/assets/VID_20250706_203411_1751814269831.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        <div class="relative max-w-sm max-h-96 rounded-lg shadow-2xl overflow-hidden">
+          <img id="loadingImage" src="/assets/marriage1.jpg" alt="Marriage" class="w-full h-96 object-cover rounded-lg transition-opacity duration-300">
+        </div>
         <div class="mt-4 text-white text-xl font-semibold">Loading...</div>
         <div class="mt-2">
           <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto"></div>
         </div>
       </div>
-    </div>
+    </div></div>
 
     <header class="w-full bg-red-600 shadow-lg fixed top-0 left-0 z-50">
       <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -126,23 +125,34 @@
       // Loading screen functionality
       window.addEventListener('load', function() {
         const loadingScreen = document.getElementById('loadingScreen');
-        const loadingVideo = document.getElementById('loadingVideo');
+        const loadingImage = document.getElementById('loadingImage');
         
-        // Hide loading screen when video ends
-        loadingVideo.addEventListener('ended', function() {
-          hideLoadingScreen();
-        });
+        const images = [
+          '/assets/marriage1.jpg',
+          '/assets/marriage2.jpg', 
+          '/assets/marriage3.jpg',
+          '/assets/marriage4.jpg',
+          '/assets/marriage5.jpg'
+        ];
         
-        // Hide loading screen if video fails to load
-        loadingVideo.addEventListener('error', function() {
-          console.log('Video failed to load, hiding loading screen');
-          hideLoadingScreen();
-        });
+        let currentImageIndex = 0;
+        let imageChangeInterval;
         
-        // Fallback: hide after 3 seconds even if video doesn't load/end
+        // Start image slideshow
+        imageChangeInterval = setInterval(function() {
+          currentImageIndex = (currentImageIndex + 1) % images.length;
+          loadingImage.style.opacity = '0';
+          setTimeout(function() {
+            loadingImage.src = images[currentImageIndex];
+            loadingImage.style.opacity = '1';
+          }, 150);
+        }, 500); // Change image every 0.5 seconds
+        
+        // Hide loading screen after all images have been shown once
         setTimeout(function() {
+          clearInterval(imageChangeInterval);
           hideLoadingScreen();
-        }, 3000);
+        }, images.length * 500); // Total time = number of images × 0.5 seconds
         
         function hideLoadingScreen() {
           loadingScreen.style.opacity = '0';
