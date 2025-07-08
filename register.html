@@ -22,58 +22,58 @@
     </div>
 
     <header class="w-full bg-red-600 shadow-lg fixed top-0 left-0 z-50">
-      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/">Home</a>
-        <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/advocate">Advocate</a>
+      <nav class="container mx-auto px-2 sm:px-4 py-3 sm:py-4 flex justify-between items-center">
+        <a class="text-white text-sm sm:text-xl font-semibold hover:text-red-200 transition-colors" href="/">Home</a>
+        <a class="text-white text-sm sm:text-xl font-semibold hover:text-red-200 transition-colors" href="/advocate">Advocate</a>
       </nav>
     </header>
 
-    <div class="container mx-auto px-4 py-8 pt-24">
+    <div class="container mx-auto px-2 sm:px-4 py-4 sm:py-8 pt-20 sm:pt-24">
       <form action="/registerme" method="POST" class="max-w-4xl mx-auto">
         <input type="hidden" name="district" id="hiddenDistrict" value="">
         <input type="hidden" name="selectedCaste" id="hiddenCaste" value="">
           <!-- Boy's Information -->
-        <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-6 md:p-8 mb-8">
-          <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-white bg-gray-800/80 py-3 rounded-lg">लड़के की जानकारी</h2>
+        <div class="bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-xl shadow-xl sm:shadow-2xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
+          <h2 class="text-lg sm:text-2xl md:text-3xl font-bold text-center mb-4 sm:mb-6 text-white bg-gray-800/80 py-2 sm:py-3 rounded-lg">लड़के की जानकारी</h2>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             <div>
-              <label for="name1" class="block text-sm font-semibold text-gray-700 mb-2">Name:</label>
-              <input type="text" id="name1" name="name1" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+              <label for="name1" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Name:</label>
+              <input type="text" id="name1" name="name1" required class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
             </div>
 
             <div>
-              <label for="fatherName1" class="block text-sm font-semibold text-gray-700 mb-2">Father's Name:</label>
-              <input type="text" id="fatherName1" name="fatherName1" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+              <label for="fatherName1" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Father's Name:</label>
+              <input type="text" id="fatherName1" name="fatherName1" required class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
             </div>
 
             <div>
-              <label for="motherName1" class="block text-sm font-semibold text-gray-700 mb-2">Mother's Name:</label>
-              <input type="text" id="motherName1" name="motherName1" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+              <label for="motherName1" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Mother's Name:</label>
+              <input type="text" id="motherName1" name="motherName1" required class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
             </div>
 
             <div>
-              <label for="mobile1" class="block text-sm font-semibold text-gray-700 mb-2">Mobile Number:</label>
-              <input type="number" id="mobile1" name="mobile1" required maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0,10);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+              <label for="mobile1" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Mobile Number:</label>
+              <input type="number" id="mobile1" name="mobile1" required maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0,10);" class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
             </div>
 
             <div>
               <div class="mb-2">
                 <input type="checkbox" id="sameAsMobile1" onchange="copyMobileToWhatsApp(1)" class="mr-2">
-                <label for="sameAsMobile1" class="text-sm text-gray-600">Same as mobile number</label>
+                <label for="sameAsMobile1" class="text-xs sm:text-sm text-gray-600">Same as mobile number</label>
               </div>
-              <label for="whatsapp1" class="block text-sm font-semibold text-gray-700 mb-2">WhatsApp Number:</label>
-              <input type="number" id="whatsapp1" name="whatsapp1" maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0,10);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+              <label for="whatsapp1" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">WhatsApp Number:</label>
+              <input type="number" id="whatsapp1" name="whatsapp1" maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0,10);" class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
             </div>
 
             <div>
-              <label for="aadhar1" class="block text-sm font-semibold text-gray-700 mb-2">Aadhar Card:</label>
-              <input type="number" id="aadhar1" name="aadhar1" maxlength="12" oninput="if(this.value.length > 12) this.value = this.value.slice(0,12);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+              <label for="aadhar1" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Aadhar Card:</label>
+              <input type="number" id="aadhar1" name="aadhar1" maxlength="12" oninput="if(this.value.length > 12) this.value = this.value.slice(0,12);" class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
             </div>
 
             <div>
-              <label for="cast1" class="block text-sm font-semibold text-gray-700 mb-2">Caste:</label>
-              <select id="cast1" name="cast1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-white">
+              <label for="cast1" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Caste:</label>
+              <select id="cast1" name="cast1" class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-white">
                 <option value="">Select Caste</option>
                 <option value="Brahmin">Brahmin</option>
                 <option value="Kshatriya">Kshatriya</option>
@@ -99,54 +99,54 @@
             </div>
 
             <div>
-              <label for="age1" class="block text-sm font-semibold text-gray-700 mb-2">Age:</label>
-              <input type="number" id="age1" name="age1" maxlength="2" oninput="if(this.value.length > 2) this.value = this.value.slice(0,2);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+              <label for="age1" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Age:</label>
+              <input type="number" id="age1" name="age1" maxlength="2" oninput="if(this.value.length > 2) this.value = this.value.slice(0,2);" class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
             </div>
           </div>
         </div>
 
         <!-- Girl's Information -->
-         <div class="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-6 md:p-8 mb-8">
-          <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-white bg-gray-800/80 py-3 rounded-lg">लड़की की जानकारी</h2>
+         <div class="bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-xl shadow-xl sm:shadow-2xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
+          <h2 class="text-lg sm:text-2xl md:text-3xl font-bold text-center mb-4 sm:mb-6 text-white bg-gray-800/80 py-2 sm:py-3 rounded-lg">लड़की की जानकारी</h2>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             <div>
-              <label for="name2" class="block text-sm font-semibold text-gray-700 mb-2">Name:</label>
-              <input type="text" id="name2" name="name2" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
+              <label for="name2" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Name:</label>
+              <input type="text" id="name2" name="name2" required class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
             </div>
 
             <div>
-              <label for="fatherName2" class="block text-sm font-semibold text-gray-700 mb-2">Father's Name:</label>
-              <input type="text" id="fatherName2" name="fatherName2" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
+              <label for="fatherName2" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Father's Name:</label>
+              <input type="text" id="fatherName2" name="fatherName2" required class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
             </div>
 
             <div>
-              <label for="motherName2" class="block text-sm font-semibold text-gray-700 mb-2">Mother's Name:</label>
-              <input type="text" id="motherName2" name="motherName2" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
+              <label for="motherName2" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Mother's Name:</label>
+              <input type="text" id="motherName2" name="motherName2" required class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
             </div>
 
             <div>
-              <label for="mobile2" class="block text-sm font-semibold text-gray-700 mb-2">Mobile Number:</label>
-              <input type="number" id="mobile2" name="mobile2" required maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0,10);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
+              <label for="mobile2" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Mobile Number:</label>
+              <input type="number" id="mobile2" name="mobile2" required maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0,10);" class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
             </div>
 
             <div>
               <div class="mb-2">
                 <input type="checkbox" id="sameAsMobile2" onchange="copyMobileToWhatsApp(2)" class="mr-2">
-                <label for="sameAsMobile2" class="text-sm text-gray-600">Same as mobile number</label>
+                <label for="sameAsMobile2" class="text-xs sm:text-sm text-gray-600">Same as mobile number</label>
               </div>
-              <label for="whatsapp2" class="block text-sm font-semibold text-gray-700 mb-2">WhatsApp Number:</label>
-              <input type="number" id="whatsapp2" name="whatsapp2" maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0,10);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
+              <label for="whatsapp2" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">WhatsApp Number:</label>
+              <input type="number" id="whatsapp2" name="whatsapp2" maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0,10);" class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
             </div>
 
             <div>
-              <label for="adhar2" class="block text-sm font-semibold text-gray-700 mb-2">Aadhar Card:</label>
-              <input type="number" id="adhar2" name="adhar2" maxlength="12" oninput="if(this.value.length > 12) this.value = this.value.slice(0,12);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
+              <label for="adhar2" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Aadhar Card:</label>
+              <input type="number" id="adhar2" name="adhar2" maxlength="12" oninput="if(this.value.length > 12) this.value = this.value.slice(0,12);" class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors" />
             </div>
 
             <div>
-              <label for="cast2" class="block text-sm font-semibold text-gray-700 mb-2">Caste:</label>
-              <select id="cast2" name="cast2" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors bg-white">
+              <label for="cast2" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Caste:</label>
+              <select id="cast2" name="cast2" class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-colors bg-white">
                 <option value="">Select Caste</option>
                 <option value="Brahmin">Brahmin</option>
                 <option value="Kshatriya">Kshatriya</option>
@@ -172,15 +172,15 @@
             </div>
 
             <div>
-              <label for="age2" class="block text-sm font-semibold text-gray-700 mb-2">Age:</label>
-              <input type="number" id="age2" name="age2" maxlength="2" oninput="if(this.value.length > 2) this.value = this.value.slice(0,2);" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+              <label for="age2" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">Age:</label>
+              <input type="number" id="age2" name="age2" maxlength="2" oninput="if(this.value.length > 2) this.value = this.value.slice(0,2);" class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
             </div>
           </div>
         </div>
 
         <!-- Submit Button -->
         <div class="text-center">
-          <button type="submit" class="mb-[50px] bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-20 rounded-lg transition-colors duration-300 transform hover:scale-105 text-lg">
+          <button type="submit" class="mb-8 sm:mb-[50px] bg-green-500 hover:bg-green-600 text-white font-semibold py-3 sm:py-4 px-8 sm:px-20 rounded-lg transition-colors duration-300 transform hover:scale-105 text-sm sm:text-lg">
             Submit
           </button>
         </div>
