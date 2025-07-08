@@ -287,7 +287,7 @@ app.post("/registerad", async (req, res) => {
           <h3>District Information</h3>
           <div class="info"><span class="label">District:</span> ${userData.district}</div>
         </div>
-        
+
         <div class="section">
           <h3>Boy's Information</h3>
           <div class="info"><span class="label">Name:</span> ${userData.boy.name}</div>
@@ -460,6 +460,7 @@ app.listen(3000, () => {
 });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/public', express.static('public'));
 
 // Serve static files from attached_assets directory
 app.use('/attached_assets', express.static(path.join(__dirname, 'attached_assets')));
