@@ -292,10 +292,7 @@ app.post("/registerad", async (req, res) => {
       <div class="match-card" id="match-${userData._id}">
         ${starIcon}
         <div class="title">Shaadi Match Detail</div>
-          <div class="section">
-          <h3>District Information</h3>
-          <div class="info"><span class="label">District:</span> ${userData.district}</div>
-        </div>
+        
 
         <div class="section">
           <h3>Boy's Information</h3>
@@ -306,6 +303,8 @@ app.post("/registerad", async (req, res) => {
           <div class="info"><span class="label">WhatsApp:</span> ${userData.boy.whatsapp}</div>
           <div class="info"><span class="label">Aadhar:</span> ${userData.boy.aadhar}</div>
           <div class="info"><span class="label">Caste:</span> ${userData.boy.caste}</div>
+        
+          <div class="info"><span class="label">District:</span> ${userData.district}</div>
           <div class="info"><span class="label">Age:</span> ${userData.boy.age}</div>
         </div>
 
@@ -318,6 +317,8 @@ app.post("/registerad", async (req, res) => {
           <div class="info"><span class="label">WhatsApp:</span> ${userData.girl.whatsapp}</div>
           <div class="info"><span class="label">Aadhar:</span> ${userData.girl.aadhar}</div>
           <div class="info"><span class="label">Caste:</span> ${userData.girl.caste}</div>
+        
+          <div class="info"><span class="label">District:</span> ${userData.district}</div>
           <div class="info"><span class="label">Age:</span> ${userData.girl.age}</div>
         </div>
 
