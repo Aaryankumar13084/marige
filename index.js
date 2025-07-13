@@ -26,7 +26,7 @@ mongoose
       minPoolSize: 0,
       maxIdleTimeMS: 30000,
       connectTimeoutMS: 30000,
-      bufferCommands: false,
+      bufferCommands: true,
     },
   )
   .then(() => {
@@ -68,10 +68,21 @@ app.post("/registerme", async (req, res) => {
           minPoolSize: 0,
           maxIdleTimeMS: 30000,
           connectTimeoutMS: 30000,
-          bufferCommands: false,
+          bufferCommands: true,
         }
       );
     }
+
+    // Wait for connection to be ready
+    await new Promise((resolve, reject) => {
+      if (mongoose.connection.readyState === 1) {
+        resolve();
+      } else {
+        mongoose.connection.once('connected', resolve);
+        mongoose.connection.once('error', reject);
+        setTimeout(() => reject(new Error('Connection timeout')), 10000);
+      }
+    });
 
     // Handle district field in case it comes as an array
     const district = Array.isArray(req.body.district) ? req.body.district[0] : req.body.district;
@@ -231,10 +242,22 @@ app.post("/registerad", async (req, res) => {
           maxPoolSize: 1,
           minPoolSize: 0,
           maxIdleTimeMS: 30000,
-          bufferCommands: false,
+          connectTimeoutMS: 30000,
+          bufferCommands: true,
         }
       );
     }
+
+    // Wait for connection to be ready
+    await new Promise((resolve, reject) => {
+      if (mongoose.connection.readyState === 1) {
+        resolve();
+      } else {
+        mongoose.connection.once('connected', resolve);
+        mongoose.connection.once('error', reject);
+        setTimeout(() => reject(new Error('Connection timeout')), 10000);
+      }
+    });
 
     // First check if advocate exists with name and password
     let alladvocate = await advocate
