@@ -258,6 +258,7 @@ app.post("/registerad", async (req, res) => {
         <header class="w-full bg-red-600 shadow-lg">
           <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/">Home</a>
+            <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/about">About</a>
             <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/advocate">Advocate</a>
           </nav>
         </header>
@@ -417,6 +418,7 @@ app.post("/registerad", async (req, res) => {
   <header class="w-full bg-red-600 shadow-lg">
     <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
       <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/">Home</a>
+      <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/about">About</a>
       <a class="text-white text-xl font-semibold hover:text-red-200 transition-colors" href="/advocate">Advocate</a>
     </nav>
   </header>
