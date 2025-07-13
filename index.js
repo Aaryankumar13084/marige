@@ -212,6 +212,10 @@ app.delete("/delete-match/:id", async (req, res) => {
   }
 });
 
+app.get("/about", (req, res) => {
+  res.sendFile(path.join(__dirname, "about.html"))
+})
+
 app.post("/registerad", async (req, res) => {
   try {
     const { name, district, phone, courtAddress, password } = req.body;
